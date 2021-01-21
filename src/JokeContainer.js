@@ -4,7 +4,10 @@ function JokeContainer(props) {
 	return (
 		<section className="joke-container">
 			<h3>Jokes go Here!</h3>
-			<p>{props.joke}</p>
+
+			{props.jokes.map((j) => (
+				<p>{j}</p>
+			))}
 		</section>
 	);
 }
