@@ -6,7 +6,7 @@ import { useState } from "react";
 import GetJoke from "./Getjoke";
 
 function App() {
-	const [joke, setJoke] = useState([]);
+	const [jokeArray, setJokeArray] = useState([]);
 	// useEffect(() => {
 	// tells React to perform actions that are not directly related to drawing -- side-effects
 	//This side effect will run exactly one time no matter how often App() function is refun
@@ -26,23 +26,32 @@ function App() {
 
 	// 	const jokeData = await response.json();
 
-	// 	console.log(jokeData.joke);
-	// 	setJoke(jokeData.joke);
+	// 	console.log(jokeData.jokeArray);
+	// 	setJokeArray(jokeData.jokeArray);
 	// }
 
 	// const runGetJoke = () => {
 	// 	GetJoke(setJokeArray, jokeArray);
 	// };
 
+	const deleteJoke = (id) => {
+		//Filter Joke out from Joke Array
+		//use the jokes.id to identify which to delete
+		// setJokeArray using newly filtered array
+		console.log(`Delete this post ${id}`);
+		const filteredArray = jokeArray.filter((j) => j.id !== id);
+		setJokeArray(filteredArray);
+	};
+
 	return (
 		<div className="App">
 			<Header />
 			<JokeButton
 				handleClick={() => {
-					GetJoke(setJoke, joke);
+					GetJoke(setJokeArray, jokeArray);
 				}}
 			/>
-			<JokeContainer joke={joke} />
+			<JokeContainer jokes={jokeArray} deleteHandler={deleteJoke} />
 		</div>
 	);
 }
