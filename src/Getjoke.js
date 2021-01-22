@@ -8,9 +8,17 @@ async function GetJoke(setJokeArray, jokeArray) {
 	const response = await jokePromise;
 
 	const jokeData = await response.json();
-	let newArr = [...jokeArray, jokeData];
-	newArr.sort((a, b) => a.joke > b.joke);
-	setJokeArray(newArr);
+
+	let sortedArr = [...jokeArray, jokeData];
+	sortedArr.sort((a, b) => a.joke > b.joke);
+
+	const uniqueJokesById = Array.from(new Set(sortedArr.map((a) => a.id))).map(
+		(id) => {
+			return sortedArr.find((a) => a.id === id);
+		}
+	);
+
+	setJokeArray(uniqueJokesById);
 }
 
 export default GetJoke;
