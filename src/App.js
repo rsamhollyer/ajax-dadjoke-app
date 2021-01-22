@@ -38,7 +38,7 @@ function App() {
 		//Filter Joke out from Joke Array
 		//use the jokes.id to identify which to delete
 		// setJokeArray using newly filtered array
-		console.log(`Delete this post ${id}`);
+
 		const filteredArray = jokeArray.filter((j) => j.id !== id);
 		setJokeArray(filteredArray);
 	};

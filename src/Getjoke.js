@@ -8,8 +8,9 @@ async function GetJoke(setJokeArray, jokeArray) {
 	const response = await jokePromise;
 
 	const jokeData = await response.json();
-
-	setJokeArray([...jokeArray, jokeData]);
+	let newArr = [...jokeArray, jokeData];
+	newArr.sort((a, b) => a.joke > b.joke);
+	setJokeArray(newArr);
 }
 
 export default GetJoke;
