@@ -1,13 +1,13 @@
 import React from "react";
 
-function JokeContainer(props) {
+function JokeContainer({ joke }) {
 	return (
 		<section className="joke-container">
 			<h3>Jokes go Here!</h3>
 
-			{props.jokes.map((j) => (
-				<p key={j.id}>{j.joke}</p>
-			))}
+			{joke.map((j) => {
+				return <p key={j.id}> {j.joke} </p>;
+			})}
 		</section>
 	);
 }

@@ -3,7 +3,7 @@ import React from "react";
 function JokeButton(props) {
 	return (
 		<nav className="nav-bar">
-			<button className="joke-button" onClick={props.GetJoke}>
+			<button className="joke-button" onClick={props.handleClick}>
 				Get Joke
 			</button>
 		</nav>
